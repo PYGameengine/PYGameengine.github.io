@@ -378,26 +378,26 @@
                     <a href="#" class="download-btn" onclick="trackDownload('Linux')">下载 Linux 版本</a>
                 </div>
                 
-                <!-- Python 包 -->
+                <!-- 源码下载 -->
                 <div class="download-card">
                     <div class="download-card-header">
                         <div class="download-card-icon">
                             <i class="fa fa-code"></i>
                         </div>
                         <div class="download-card-title">
-                            <h3>Python 源文件</h3>
-                            <p>通过 python 运行</p>
+                            <h3>源码下载</h3>
+                            <p>获取完整的源代码</p>
                         </div>
                     </div>
                     <div class="download-card-body">
                         <ul>
-                            <li>跨平台支持</li>
-                            <li>轻松集成现有项目</li>
-                            <li>版本管理</li>
-                            <li>最小依赖</li>
+                            <li>完整的项目源代码</li>
+                            <li>开发文档</li>
+                            <li>示例项目</li>
+                            <li>贡献指南</li>
                         </ul>
                     </div>
-                    <a href="#" class="download-btn secondary" onclick="showInstallationCommand()">点我安装</a>
+                    <a href="https://github.com/PYGameengine/PYGameengine.github.io/releases/download/releases/PYGameengine.source.zip" class="download-btn secondary" target="_blank">下载源码</a>
                 </div>
             </div>
             
@@ -485,7 +485,7 @@
                     <h5>链接</h5>
                     <ul>
                         <li><a href="index.html">首页</a></li>
-                        <li><a href="docs.html">文档</a></li>
+                        <li><a href="docs/index.html">文档</a></li>
                         <li><a href="download.html">下载</a></li>
                         <li><a href="about.html">关于我们</a></li>
                     </ul>
@@ -502,19 +502,6 @@
         </div>
     </footer>
 
-    <!-- 安装命令模态框 -->
-    <div id="installation-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h3>通过 pip 安装 PYGameengine</h3>
-            <div class="code-example">
-                <code id="installation-command">pip install pygameengine</code>
-                <button id="copy-button" onclick="copyToClipboard()">复制</button>
-            </div>
-            <p>在命令提示符或终端中运行上面的命令以安装 PYGameengine Python 包。</p>
-        </div>
-    </div>
-
     <!-- 下载成功模态框 -->
     <div id="download-success-modal" class="modal">
         <div class="modal-content">
@@ -528,23 +515,9 @@
     <script src="scripts.js"></script>
     <script>
         // 下载功能相关脚本
-        const installationModal = document.getElementById('installation-modal');
         const downloadSuccessModal = document.getElementById('download-success-modal');
-        const closeModalButtons = document.querySelectorAll('.close-modal');
         const closeSuccessModalBtn = document.querySelector('.close-modal-btn');
         const downloadAltLink = document.getElementById('download-alt-link');
-        
-        // 显示安装命令模态框
-        function showInstallationCommand() {
-            installationModal.style.display = 'flex';
-        }
-        
-        // 关闭安装命令模态框
-        closeModalButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                installationModal.style.display = 'none';
-            });
-        });
         
         // 关闭成功模态框
         function closeSuccessModal() {
@@ -553,31 +526,10 @@
         
         // 点击模态框外部关闭
         window.addEventListener('click', (event) => {
-            if (event.target === installationModal) {
-                installationModal.style.display = 'none';
-            }
             if (event.target === downloadSuccessModal) {
                 downloadSuccessModal.style.display = 'none';
             }
         });
-        
-        // 复制命令到剪贴板
-        function copyToClipboard() {
-            const commandText = document.getElementById('installation-command').textContent;
-            navigator.clipboard.writeText(commandText).then(() => {
-                const copyButton = document.getElementById('copy-button');
-                const originalText = copyButton.textContent;
-                copyButton.textContent = '已复制!';
-                copyButton.style.backgroundColor = '#48bb78';
-                
-                setTimeout(() => {
-                    copyButton.textContent = originalText;
-                    copyButton.style.backgroundColor = '#4299e1';
-                }, 2000);
-            }).catch(err => {
-                console.error('复制失败: ', err);
-            });
-        }
         
         // 跟踪下载
         function trackDownload(platform) {
@@ -607,7 +559,7 @@
             // 初始化下载按钮
             const downloadButtons = document.querySelectorAll('.download-btn');
             downloadButtons.forEach(button => {
-                if (!button.hasAttribute('onclick')) {
+                if (!button.hasAttribute('onclick') && !button.hasAttribute('href')) {
                     button.addEventListener('click', function(e) {
                         e.preventDefault();
                         alert('下载功能正在准备中，请稍后再试。');
