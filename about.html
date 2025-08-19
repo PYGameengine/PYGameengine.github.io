@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PYGameengine - 关于我们</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .about-section {
+            padding: 80px 0;
+            background-color: #f8fafc;
+        }
+        
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .about-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .about-header h2 {
+            font-size: 2.5rem;
+            color: #2d3748;
+            margin-bottom: 20px;
+        }
+        
+        .about-header p {
+            font-size: 1.2rem;
+            color: #4a5568;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .about-text {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            padding: 40px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .about-text h3 {
+            margin-top: 0;
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            color: #4a5568;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .about-text ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .about-text li {
+            margin-bottom: 10px;
+            color: #4a5568;
+        }
+        
+        .about-image {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .team-section {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            padding: 60px 40px;
+            margin-bottom: 60px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .team-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .team-header h3 {
+            font-size: 2rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        
+        .team-header p {
+            color: #4a5568;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .team-members {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .team-member {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .team-member-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            border: 3px solid #e2e8f0;
+        }
+        
+        .team-member-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .team-member-info h4 {
+            margin: 0 0 10px 0;
+            font-size: 1.3rem;
+            color: #2d3748;
+        }
+        
+        .team-member-info p {
+            margin: 0 0 15px 0;
+            color: #718096;
+            font-size: 0.95rem;
+        }
+        
+        .team-member-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .team-member-social a {
+            color: #4a5568;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .team-member-social a:hover {
+            color: #4299e1;
+        }
+        
+        .contact-section {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            padding: 60px 40px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .contact-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .contact-header h3 {
+            font-size: 2rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+        
+        .contact-header p {
+            color: #4a5568;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background-color: #f8fafc;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #4299e1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: white;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        
+        .contact-details h4 {
+            margin: 0 0 5px 0;
+            color: #2d3748;
+            font-size: 1.1rem;
+        }
+        
+        .contact-details p {
+            margin: 0;
+            color: #4a5568;
+        }
+        
+        .contact-details a {
+            color: #4299e1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-details a:hover {
+            color: #3182ce;
+            text-decoration: underline;
+        }
+        
+        .social-links {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .social-links h4 {
+            margin: 0 0 20px 0;
+            color: #2d3748;
+            font-size: 1.3rem;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #f8fafc;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4a5568;
+            font-size: 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .social-icon:hover {
+            background-color: #4299e1;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(66, 153, 225, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-header h2 {
+                font-size: 2rem;
+            }
+            
+            .about-text, .about-image {
+                padding: 30px 20px;
+            }
+            
+            .team-section, .contact-section {
+                padding: 40px 20px;
+            }
+            
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>PYGameengine</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="docs/index.html">文档</a></li>
+                    <li><a href="download.html">下载</a></li>
+                    <li><a href="about.html" class="active">关于我们</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 关于我们区域 -->
+    <section class="about-section">
+        <div class="about-container">
+            <div class="about-header">
+                <h2>关于 PYGameengine</h2>
+                <p>我们致力于打造一款轻量级、高性能的游戏开发引擎，让游戏开发变得简单而强大。</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>我们的愿景</h3>
+                    <p>PYGameengine 诞生于一个简单但雄心勃勃的愿景：让游戏开发变得更加简单、高效和普及。我们相信，每个人都应该有机会将自己的创意转化为精彩的游戏体验，而不需要掌握复杂的编程知识或投入大量资源。</p>
+                    <p>我们的团队由一群热爱游戏开发和开源事业的专业人士组成，我们希望通过 PYGameengine 为游戏开发者提供一个强大而友好的工具，帮助他们实现自己的游戏梦想。</p>
+                    <h3>项目历史</h3>
+                    <p>PYGameengine 项目始于 2022 年，当时我们的创始人意识到，对于初学者和独立开发者来说，现有的游戏引擎要么过于复杂，要么性能不足，或者缺乏良好的中文支持。于是，我们决定创建一款专为中国开发者设计的游戏引擎。</p>
+                    <p>经过两年多的努力，我们已经从一个简单的概念验证项目发展成为一个功能齐全的游戏引擎，拥有完整的渲染系统、物理引擎、音频系统和编辑器工具。我们的社区也在不断壮大，越来越多的开发者开始使用 PYGameengine 来创建他们的游戏。</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://via.placeholder.com/600x800?text=PYGameengine+开发团队" alt="PYGameengine 开发团队">
+                </div>
+            </div>
+            
+            <!-- 团队介绍 -->
+            <div class="team-section">
+                <div class="team-header">
+                    <h3>我们的团队</h3>
+                    <p>PYGameengine 团队由一群充满激情和才华的游戏开发者、图形程序员和软件工程师组成。</p>
+                </div>
+                <div class="team-members">
+                    <div class="team-member">
+                        <div class="team-member-avatar">
+                            <img src="https://via.placeholder.com/120?text=张三" alt="张三">
+                        </div>
+                        <div class="team-member-info">
+                            <h4>张三</h4>
+                            <p>创始人 & 首席架构师</p>
+                            <div class="team-member-social">
+                                <a href="#"><i class="fab fa-github"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-member-avatar">
+                            <img src="https://via.placeholder.com/120?text=李四" alt="李四">
+                        </div>
+                        <div class="team-member-info">
+                            <h4>李四</h4>
+                            <p>图形工程师</p>
+                            <div class="team-member-social">
+                                <a href="#"><i class="fab fa-github"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-member-avatar">
+                            <img src="https://via.placeholder.com/120?text=王五" alt="王五">
+                        </div>
+                        <div class="team-member-info">
+                            <h4>王五</h4>
+                            <p>物理系统专家</p>
+                            <div class="team-member-social">
+                                <a href="#"><i class="fab fa-github"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-member-avatar">
+                            <img src="https://via.placeholder.com/120?text=赵六" alt="赵六">
+                        </div>
+                        <div class="team-member-info">
+                            <h4>赵六</h4>
+                            <p>音频系统开发者</p>
+                            <div class="team-member-social">
+                                <a href="#"><i class="fab fa-github"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 联系我们 -->
+            <div class="contact-section">
+                <div class="contact-header">
+                    <h3>联系我们</h3>
+                    <p>如果您有任何问题、建议或合作意向，欢迎随时联系我们。</p>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>邮箱</h4>
+                            <p><a href="mailto:contact@pygameengine.com">contact@pygameengine.com</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-github"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>GitHub</h4>
+                            <p><a href="https://github.com/pygameengine" target="_blank">github.com/pygameengine</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>社区论坛</h4>
+                            <p><a href="https://forum.pygameengine.com" target="_blank">forum.pygameengine.com</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>办公地址</h4>
+                            <p>北京市海淀区中关村软件园</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <h4>关注我们</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-bilibili"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-weixin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h4>PYGameengine</h4>
+                    <p>轻量级游戏开发引擎，让游戏开发变得简单而强大。</p>
+                </div>
+                <div class="footer-links">
+                    <h5>链接</h5>
+                    <ul>
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="docs/index.html">文档</a></li>
+                        <li><a href="download.html">下载</a></li>
+                        <li><a href="about.html">关于我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h5>联系我们</h5>
+                    <p>邮箱: contact@pygameengine.com</p>
+                    <p>GitHub: github.com/pygameengine</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 PYGameengine. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script>
+        // 关于页面相关脚本
+        document.addEventListener('DOMContentLoaded', function() {
+            // 添加 Font Awesome 图标
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css';
+            document.head.appendChild(link);
+            
+            // 平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // 图片加载失败处理
+            document.querySelectorAll('img').forEach(img => {
+                img.addEventListener('error', function() {
+                    this.src = 'https://via.placeholder.com/' + this.width + 'x' + this.height + '?text=Image+Not+Available';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
