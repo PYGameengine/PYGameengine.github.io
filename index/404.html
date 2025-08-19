@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>页面未找到 - PYGameengine</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .error-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: #f8fafc;
+        }
+        
+        .error-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .error-content {
+            text-align: center;
+            max-width: 600px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            padding: 60px 40px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .error-code {
+            font-size: 8rem;
+            font-weight: 700;
+            color: #4299e1;
+            margin: 0 0 20px 0;
+            line-height: 1;
+        }
+        
+        .error-message {
+            font-size: 1.5rem;
+            color: #2d3748;
+            margin: 0 0 20px 0;
+        }
+        
+        .error-description {
+            color: #4a5568;
+            margin: 0 0 30px 0;
+            line-height: 1.6;
+        }
+        
+        .error-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 250px;
+            margin: 0 auto;
+        }
+        
+        .error-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .error-btn.primary {
+            background-color: #4299e1;
+            color: white;
+        }
+        
+        .error-btn.primary:hover {
+            background-color: #3182ce;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(66, 153, 225, 0.3);
+        }
+        
+        .error-btn.secondary {
+            background-color: #718096;
+            color: white;
+        }
+        
+        .error-btn.secondary:hover {
+            background-color: #4a5568;
+        }
+        
+        .error-image {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .error-content {
+                padding: 40px 20px;
+            }
+            
+            .error-code {
+                font-size: 5rem;
+            }
+            
+            .error-message {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body class="error-page">
+    <!-- 导航栏 -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>PYGameengine</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="docs/index.html">文档</a></li>
+                    <li><a href="download.html">下载</a></li>
+                    <li><a href="about.html">关于我们</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 错误页面内容 -->
+    <div class="error-container">
+        <div class="error-content">
+            <img src="https://via.placeholder.com/400x200?text=404+Not+Found" alt="404 页面未找到" class="error-image">
+            <div class="error-code">404</div>
+            <h2 class="error-message">页面未找到</h2>
+            <p class="error-description">抱歉，您请求的页面不存在或已被移动。请检查您输入的网址是否正确，或尝试使用以下链接导航到其他页面。</p>
+            <div class="error-actions">
+                <a href="index.html" class="error-btn primary">返回首页</a>
+                <a href="docs/index.html" class="error-btn secondary">浏览文档</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h4>PYGameengine</h4>
+                    <p>轻量级游戏开发引擎，让游戏开发变得简单而强大。</p>
+                </div>
+                <div class="footer-links">
+                    <h5>链接</h5>
+                    <ul>
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="docs/index.html">文档</a></li>
+                        <li><a href="download.html">下载</a></li>
+                        <li><a href="about.html">关于我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h5>联系我们</h5>
+                    <p>邮箱: contact@pygameengine.com</p>
+                    <p>GitHub: github.com/pygameengine</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 PYGameengine. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script>
+        // 404 页面相关脚本
+        document.addEventListener('DOMContentLoaded', function() {
+            // 添加一些动画效果
+            const errorCode = document.querySelector('.error-code');
+            
+            // 简单的脉冲动画
+            function pulseAnimation() {
+                errorCode.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    errorCode.style.transform = 'scale(1)';
+                }, 1000);
+            }
+            
+            // 每 3 秒触发一次脉冲动画
+            setInterval(pulseAnimation, 3000);
+            
+            // 图片加载失败处理
+            document.querySelectorAll('img').forEach(img => {
+                img.addEventListener('error', function() {
+                    this.src = 'https://via.placeholder.com/' + this.width + 'x' + this.height + '?text=Image+Not+Available';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

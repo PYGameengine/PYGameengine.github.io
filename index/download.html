@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PYGameengine - 下载</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .download-section {
+            padding: 80px 0;
+            background-color: #f8fafc;
+        }
+        
+        .download-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .download-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .download-header h2 {
+            font-size: 2.5rem;
+            color: #2d3748;
+            margin-bottom: 20px;
+        }
+        
+        .download-header p {
+            font-size: 1.2rem;
+            color: #4a5568;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .download-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .download-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .download-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .download-card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .download-card-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #4299e1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: white;
+            font-size: 24px;
+        }
+        
+        .download-card-title {
+            flex: 1;
+        }
+        
+        .download-card-title h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #2d3748;
+        }
+        
+        .download-card-title p {
+            margin: 5px 0 0 0;
+            color: #718096;
+            font-size: 0.9rem;
+        }
+        
+        .download-card-body {
+            margin-bottom: 25px;
+        }
+        
+        .download-card-body ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .download-card-body li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+            color: #4a5568;
+        }
+        
+        .download-card-body li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #48bb78;
+            font-weight: bold;
+        }
+        
+        .download-btn {
+            display: block;
+            width: 100%;
+            background-color: #4299e1;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        
+        .download-btn:hover {
+            background-color: #3182ce;
+        }
+        
+        .download-btn.secondary {
+            background-color: #718096;
+        }
+        
+        .download-btn.secondary:hover {
+            background-color: #4a5568;
+        }
+        
+        .download-btn.danger {
+            background-color: #e53e3e;
+        }
+        
+        .download-btn.danger:hover {
+            background-color: #c53030;
+        }
+        
+        .release-notes {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            padding: 40px;
+            margin-bottom: 60px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .release-notes h3 {
+            margin-top: 0;
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .release-notes h3 span {
+            background-color: #3182ce;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            margin-left: 15px;
+            font-weight: normal;
+        }
+        
+        .release-notes-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .release-section h4 {
+            font-size: 1.2rem;
+            color: #2d3748;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+        
+        .release-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .release-section li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+            color: #4a5568;
+        }
+        
+        .release-section.features li:before {
+            content: "✨";
+            position: absolute;
+            left: 0;
+        }
+        
+        .release-section.fixes li:before {
+            content: "🐞";
+            position: absolute;
+            left: 0;
+        }
+        
+        .release-section.improvements li:before {
+            content: "🚀";
+            position: absolute;
+            left: 0;
+        }
+        
+        .compatibility {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            padding: 40px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .compatibility h3 {
+            margin-top: 0;
+            font-size: 1.8rem;
+            color: #2d3748;
+            margin-bottom: 20px;
+        }
+        
+        .compatibility-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .compatibility-item {
+            text-align: center;
+            padding: 20px;
+            background-color: #f8fafc;
+            border-radius: 5px;
+        }
+        
+        .compatibility-item .os-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .compatibility-item h4 {
+            margin: 0 0 10px 0;
+            color: #2d3748;
+            font-size: 1.1rem;
+        }
+        
+        .compatibility-item p {
+            margin: 0;
+            color: #718096;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .download-header h2 {
+                font-size: 2rem;
+            }
+            
+            .download-card {
+                padding: 20px;
+            }
+            
+            .release-notes, .compatibility {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>PYGameengine</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="docs/index.html">文档</a></li>
+                    <li><a href="download.html" class="active">下载</a></li>
+                    <li><a href="about.html">关于我们</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 下载区域 -->
+    <section class="download-section">
+        <div class="download-container">
+            <div class="download-header">
+                <h2>下载 PYGameengine</h2>
+                <p>选择适合您的操作系统和需求的版本，开始您的游戏开发之旅。所有版本均包含完整的引擎功能和示例代码。</p>
+            </div>
+            
+            <div class="download-cards">
+                <!-- Windows 版本 -->
+                <div class="download-card">
+                    <div class="download-card-header">
+                        <div class="download-card-icon">
+                            <i class="fa fa-windows"></i>
+                        </div>
+                        <div class="download-card-title">
+                            <h3>Windows 版本</h3>
+                            <p>适用于 Windows 7/8/10/11</p>
+                        </div>
+                    </div>
+                    <div class="download-card-body">
+                        <ul>
+                            <li>完整的开发环境</li>
+                            <li>一键安装包</li>
+                            <li>包含所有依赖项</li>
+                            <li>内置开发工具</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="download-btn" onclick="trackDownload('Windows')">下载 Windows 版本</a>
+                </div>
+                
+                <!-- macOS 版本 -->
+                <div class="download-card">
+                    <div class="download-card-header">
+                        <div class="download-card-icon">
+                            <i class="fa fa-apple"></i>
+                        </div>
+                        <div class="download-card-title">
+                            <h3>macOS 版本</h3>
+                            <p>适用于 macOS 10.14+</p>
+                        </div>
+                    </div>
+                    <div class="download-card-body">
+                        <ul>
+                            <li>DMG 安装包</li>
+                            <li>支持 Metal 渲染</li>
+                            <li>适配苹果 Silicon</li>
+                            <li>沙盒兼容</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="download-btn" onclick="trackDownload('macOS')">下载 macOS 版本</a>
+                </div>
+                
+                <!-- Linux 版本 -->
+                <div class="download-card">
+                    <div class="download-card-header">
+                        <div class="download-card-icon">
+                            <i class="fa fa-linux"></i>
+                        </div>
+                        <div class="download-card-title">
+                            <h3>Linux 版本</h3>
+                            <p>适用于主流 Linux 发行版</p>
+                        </div>
+                    </div>
+                    <div class="download-card-body">
+                        <ul>
+                            <li>AppImage 格式</li>
+                            <li>DEB 和 RPM 包</li>
+                            <li>源码编译支持</li>
+                            <li>开源社区支持</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="download-btn" onclick="trackDownload('Linux')">下载 Linux 版本</a>
+                </div>
+                
+                <!-- Python 包 -->
+                <div class="download-card">
+                    <div class="download-card-header">
+                        <div class="download-card-icon">
+                            <i class="fa fa-code"></i>
+                        </div>
+                        <div class="download-card-title">
+                            <h3>Python 包</h3>
+                            <p>通过 pip 安装</p>
+                        </div>
+                    </div>
+                    <div class="download-card-body">
+                        <ul>
+                            <li>跨平台支持</li>
+                            <li>轻松集成现有项目</li>
+                            <li>版本管理</li>
+                            <li>最小依赖</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="download-btn secondary" onclick="showInstallationCommand()">查看安装命令</a>
+                </div>
+            </div>
+            
+            <!-- 最新版本发布说明 -->
+            <div class="release-notes">
+                <h3>最新版本 1.0.0 <span>2024-01-15</span></h3>
+                <div class="release-notes-content">
+                    <div class="release-section features">
+                        <h4>新特性</h4>
+                        <ul>
+                            <li>全新的场景编辑器界面</li>
+                            <li>增强的物理引擎</li>
+                            <li>支持 2D 和 3D 混合渲染</li>
+                            <li>新增粒子系统</li>
+                            <li>改进的音频系统</li>
+                        </ul>
+                    </div>
+                    <div class="release-section fixes">
+                        <h4>问题修复</h4>
+                        <ul>
+                            <li>修复了窗口大小调整的问题</li>
+                            <li>解决了特定显卡的兼容性问题</li>
+                            <li>修复了内存泄漏问题</li>
+                            <li>解决了文件导入导出的错误</li>
+                        </ul>
+                    </div>
+                    <div class="release-section improvements">
+                        <h4>性能改进</h4>
+                        <ul>
+                            <li>渲染性能提升 30%</li>
+                            <li>资源加载速度优化</li>
+                            <li>编辑器响应速度提升</li>
+                            <li>内存占用减少</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 系统兼容性 -->
+            <div class="compatibility">
+                <h3>系统兼容性</h3>
+                <div class="compatibility-grid">
+                    <div class="compatibility-item">
+                        <div class="os-icon">
+                            <i class="fa fa-windows"></i>
+                        </div>
+                        <h4>Windows</h4>
+                        <p>Windows 7 或更高版本</p>
+                    </div>
+                    <div class="compatibility-item">
+                        <div class="os-icon">
+                            <i class="fa fa-apple"></i>
+                        </div>
+                        <h4>macOS</h4>
+                        <p>macOS 10.14 或更高版本</p>
+                    </div>
+                    <div class="compatibility-item">
+                        <div class="os-icon">
+                            <i class="fa fa-linux"></i>
+                        </div>
+                        <h4>Linux</h4>
+                        <p>Ubuntu 18.04 或兼容发行版</p>
+                    </div>
+                    <div class="compatibility-item">
+                        <div class="os-icon">
+                            <i class="fa fa-microchip"></i>
+                        </div>
+                        <h4>最低配置</h4>
+                        <p>4GB RAM，OpenGL 3.3</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h4>PYGameengine</h4>
+                    <p>轻量级游戏开发引擎，让游戏开发变得简单而强大。</p>
+                </div>
+                <div class="footer-links">
+                    <h5>链接</h5>
+                    <ul>
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="docs/index.html">文档</a></li>
+                        <li><a href="download.html">下载</a></li>
+                        <li><a href="about.html">关于我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h5>联系我们</h5>
+                    <p>邮箱: contact@pygameengine.com</p>
+                    <p>GitHub: github.com/pygameengine</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 PYGameengine. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 安装命令模态框 -->
+    <div id="installation-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>通过 pip 安装 PYGameengine</h3>
+            <div class="code-example">
+                <code id="installation-command">pip install pygameengine</code>
+                <button id="copy-button" onclick="copyToClipboard()">复制</button>
+            </div>
+            <p>在命令提示符或终端中运行上面的命令以安装 PYGameengine Python 包。</p>
+        </div>
+    </div>
+
+    <!-- 下载成功模态框 -->
+    <div id="download-success-modal" class="modal">
+        <div class="modal-content">
+            <div class="success-icon">✓</div>
+            <h3>下载开始</h3>
+            <p>您的下载已开始。如果没有自动开始，请<a href="#" id="download-alt-link">点击此处</a>。</p>
+            <button class="close-modal-btn" onclick="closeSuccessModal()">关闭</button>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script>
+        // 下载功能相关脚本
+        const installationModal = document.getElementById('installation-modal');
+        const downloadSuccessModal = document.getElementById('download-success-modal');
+        const closeModalButtons = document.querySelectorAll('.close-modal');
+        const closeSuccessModalBtn = document.querySelector('.close-modal-btn');
+        const downloadAltLink = document.getElementById('download-alt-link');
+        
+        // 显示安装命令模态框
+        function showInstallationCommand() {
+            installationModal.style.display = 'flex';
+        }
+        
+        // 关闭安装命令模态框
+        closeModalButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                installationModal.style.display = 'none';
+            });
+        });
+        
+        // 关闭成功模态框
+        function closeSuccessModal() {
+            downloadSuccessModal.style.display = 'none';
+        }
+        
+        // 点击模态框外部关闭
+        window.addEventListener('click', (event) => {
+            if (event.target === installationModal) {
+                installationModal.style.display = 'none';
+            }
+            if (event.target === downloadSuccessModal) {
+                downloadSuccessModal.style.display = 'none';
+            }
+        });
+        
+        // 复制命令到剪贴板
+        function copyToClipboard() {
+            const commandText = document.getElementById('installation-command').textContent;
+            navigator.clipboard.writeText(commandText).then(() => {
+                const copyButton = document.getElementById('copy-button');
+                const originalText = copyButton.textContent;
+                copyButton.textContent = '已复制!';
+                copyButton.style.backgroundColor = '#48bb78';
+                
+                setTimeout(() => {
+                    copyButton.textContent = originalText;
+                    copyButton.style.backgroundColor = '#4299e1';
+                }, 2000);
+            }).catch(err => {
+                console.error('复制失败: ', err);
+            });
+        }
+        
+        // 跟踪下载
+        function trackDownload(platform) {
+            // 在实际应用中，这里会发送下载统计信息到服务器
+            console.log(`下载请求: ${platform} 版本`);
+            
+            // 设置替代下载链接
+            downloadAltLink.setAttribute('href', `downloads/pygameengine-1.0.0-${platform.toLowerCase()}.zip`);
+            
+            // 显示下载成功模态框
+            downloadSuccessModal.style.display = 'flex';
+            
+            // 模拟文件下载
+            setTimeout(() => {
+                // 在实际应用中，这里会触发真实的文件下载
+                // window.location.href = `downloads/pygameengine-1.0.0-${platform.toLowerCase()}.zip`;
+            }, 1000);
+        }
+        
+        // 添加 Font Awesome 图标
+        document.addEventListener('DOMContentLoaded', function() {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css';
+            document.head.appendChild(link);
+            
+            // 初始化下载按钮
+            const downloadButtons = document.querySelectorAll('.download-btn');
+            downloadButtons.forEach(button => {
+                if (!button.hasAttribute('onclick')) {
+                    button.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        alert('下载功能正在准备中，请稍后再试。');
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
