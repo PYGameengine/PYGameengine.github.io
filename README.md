@@ -5,5 +5,6 @@
 在官网https://pygameengine.github.io/index.html  里面下载源码找到game_launcher.py然后运行
 下载所需依赖运行即可我配备了图形化界面更加方便。
 #注意！！！如果出现一切ui之类的bug请重启game_launcher.py
+代码教程请移步到https://github.com/PYGameengine/PYGameengine.github.io/blob/main/SCRIPT_SYSTEM_INTEGRATION.md
 
 © 2025 PYGameengine. 保留所有权利。
