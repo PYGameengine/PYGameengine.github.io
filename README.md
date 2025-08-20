@@ -75,11 +75,68 @@ private const string CDN_URL = "https://your-uos-cdn-url/";
 ```
 
 ### 2. 设置热更新UI
-在Unity编辑器中：
-1. 创建一个面板用于显示热更新状态和进度
-2. 添加Text组件用于显示状态信息
-3. 添加Slider组件用于显示下载进度
-4. 将这些UI元素赋值给`HotFixLoader`脚本的相应字段
+
+#### 创建热更新UI元素
+在Unity编辑器中创建以下UI元素：
+
+1. **创建Canvas**
+   - 在Hierarchy窗口右键 -> UI -> Canvas
+   - 将Canvas的Render Mode设置为"Screen Space - Overlay"
+   
+2. **创建热更新面板**
+   - 在Canvas下创建一个Panel作为热更新面板的根物体
+   - 调整面板的大小、位置和样式（建议居中显示）
+   - 添加背景图片或设置BackgroundColor使其清晰可见
+   
+3. **添加状态文本**
+   - 在Panel下创建一个Text组件
+   - 命名为"StatusText"
+   - 设置合适的字体大小、颜色和对齐方式
+   - 初始文本可以设为"正在检查更新..."
+   
+4. **添加进度条**
+   - 在Panel下创建一个Slider组件
+   - 命名为"ProgressSlider"
+   - 设置Direction为"Left To Right"
+   - 调整大小和位置，使其位于状态文本下方
+   - 可以自定义Slider的外观（如背景、填充区域的颜色）
+   
+5. **添加可选的UI元素（推荐）**
+   - **取消按钮**：添加Button组件，命名为"CancelButton"
+   - **版本文本**：添加Text组件，命名为"VersionText"，用于显示版本信息
+   - **提示图标**：添加Image组件，用于显示不同状态的图标
+
+#### 挂载脚本
+
+有两种方式可以配置热更新UI：
+
+**方法一：使用HotUpdateUIConfig脚本（推荐）**
+
+1. 在热更新面板的根物体上添加`HotUpdateUIConfig`脚本
+2. 在Inspector窗口中，将创建的UI元素拖拽到对应的字段中：
+   - `updatePanel`：拖拽Panel对象
+   - `statusText`：拖拽StatusText对象
+   - `progressSlider`：拖拽ProgressSlider对象
+   - （可选）`cancelButton`：拖拽CancelButton对象
+   - （可选）`versionText`：拖拽VersionText对象
+3. 配置进度条颜色（根据需要）
+4. 这样配置后，`HotUpdateUIConfig`会在Start时自动将UI引用设置给`HotFixLoader`
+
+**方法二：直接配置HotFixLoader脚本**
+
+1. 在场景中找到挂载了`HotFixLoader`脚本的GameObject
+2. 在Inspector窗口中，将创建的UI元素拖拽到对应的字段中：
+   - `updatePanel`：拖拽Panel对象
+   - `updateStatusText`：拖拽StatusText对象
+   - `updateProgressSlider`：拖拽ProgressSlider对象
+
+#### 推荐的挂载位置
+
+- `HotFixLoader`脚本：建议挂载在一个名为"HotFixSystem"的空GameObject上，该对象应该放在游戏启动场景中
+- `HotUpdateUIConfig`脚本：建议直接挂载在热更新面板的根物体（Panel）上
+- `UOSHotUpdateManager`脚本：会由`HotFixLoader`自动创建，不需要手动挂载
+
+这样的结构设计可以使热更新系统的各个组件职责明确，便于管理和维护。
 
 ### 3. 添加脚本到场景
 1. 在Unity场景中创建一个空GameObject
